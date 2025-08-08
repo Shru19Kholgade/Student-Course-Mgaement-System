@@ -1,0 +1,23 @@
+@RestController
+@RequestMapping("/api/students")
+@CrossOrigin(origins = "*")
+public class StudentController {
+
+    @Autowired
+    private StudentService service;
+
+    @GetMapping
+    public List<Student> getAll() {
+        return service.getAll();
+    }
+
+    @PostMapping
+    public Student add(@RequestBody Student student) {
+        return service.add(student);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
+}
